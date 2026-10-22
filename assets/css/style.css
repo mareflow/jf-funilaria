@@ -1635,10 +1635,10 @@ section {
   padding: 70px 0 25px 0;
 }
 
-.footer-grid-4 {
+.footer-grid-3, .footer-grid-4 {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1.2fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1.4fr 1.1fr 1.1fr;
+  gap: 48px;
   margin-bottom: 50px;
 }
 
@@ -1834,7 +1834,7 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .footer-grid-4 {
+  .footer-grid-3, .footer-grid-4 {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -2131,7 +2131,7 @@ section {
   }
 
   /* Footer */
-  .footer-grid-4 {
+  .footer-grid-3, .footer-grid-4 {
     grid-template-columns: 1fr;
     gap: 26px;
     width: 100%;
