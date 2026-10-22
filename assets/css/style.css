@@ -469,11 +469,6 @@ section {
   margin-bottom: 18px;
 }
 
-.hero-pill::before {
-  content: '⚡';
-  color: var(--color-primary-cyan);
-}
-
 .hero-title {
   font-family: var(--font-heading);
   font-size: clamp(2.3rem, 4.8vw, 3.8rem);
