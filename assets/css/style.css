@@ -1192,7 +1192,7 @@ section {
   line-height: 1.75;
   text-align: center;
   max-width: 860px;
-  margin: 0 auto 34px auto;
+  margin: 0 auto 18px auto;
 }
 
 .trust-lead-text strong {
@@ -1200,64 +1200,17 @@ section {
   font-weight: 600;
 }
 
-.reviews-pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 24px;
-}
-
-.reviews-pillar {
-  padding: 0 4px;
-}
-
-.pillar-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.pillar-icon-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary-cyan);
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
-  flex-shrink: 0;
-}
-
-.pillar-header h4 {
-  font-family: var(--font-heading);
-  font-size: 1.12rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-  letter-spacing: -0.2px;
-}
-
-.reviews-pillar p {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
-}
-
 .reviews-callout {
   font-size: 1.02rem;
   color: #94a3b8;
   font-style: italic;
   text-align: center;
-  margin: 32px auto 0 auto;
+  margin: 0 auto;
   line-height: 1.6;
   max-width: 760px;
 }
 
 @media (max-width: 900px) {
-  .reviews-pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
   .trust-lead-text {
     font-size: 1.02rem;
   }
