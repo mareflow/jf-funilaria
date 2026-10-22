@@ -1023,7 +1023,7 @@ section {
   flex-shrink: 0;
 }
 
-/* Disclaimer Box */
+/* Disclaimer Box (Abaixo do 1 e 2 na coluna de seleção) */
 .sim-disclaimer-box {
   display: flex;
   align-items: flex-start;
@@ -1031,11 +1031,12 @@ section {
   background: rgba(0, 168, 255, 0.04);
   border: 1px dashed rgba(0, 168, 255, 0.25);
   border-radius: var(--radius-sm);
-  padding: 11px 13px;
-  font-size: 0.77rem;
+  padding: 12px 14px;
+  font-size: 0.78rem;
   color: #94a3b8;
-  line-height: 1.45;
-  margin-bottom: 20px;
+  line-height: 1.5;
+  margin-top: 18px;
+  margin-bottom: 0;
 }
 
 .sim-disclaimer-box svg {
