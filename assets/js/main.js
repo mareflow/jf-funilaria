@@ -172,50 +172,97 @@ function initBeforeAfterSlider() {
 }
 
 /* ==========================================================================
-   3. QUICK QUOTE SIMULATOR (CALCULADORA DE ORÇAMENTO)
+   3. QUICK QUOTE SIMULATOR (CALCULADORA DE ORÇAMENTO INTELIGENTE)
    ========================================================================== */
 function initQuoteCalculator() {
-  const serviceButtons = document.querySelectorAll('.sim-btn, .service-option-btn');
-  const partButtons = document.querySelectorAll('.part-btn, .part-option-btn');
+  const serviceButtons = document.querySelectorAll('.sim-btn');
+  const partButtons = document.querySelectorAll('.part-btn');
   const estimateTimeDisplay = document.getElementById('calcEstimatedTime');
+  const speedTagDisplay = document.getElementById('calcSpeedTag');
   const estimateSummaryDisplay = document.getElementById('calcSummaryDesc');
+  const processStepsDisplay = document.getElementById('calcProcessSteps');
   const sendWhatsAppBtn = document.getElementById('calcWhatsAppBtn');
 
   if (!serviceButtons.length || !sendWhatsAppBtn) return;
 
-  let selectedService = "Pintura Express (Mesmo Dia)";
+  let selectedService = "Riscos e Arranhões Superficiais";
   let selectedPart = "Para-choque Dianteiro / Traseiro";
 
   const estimateMap = {
-    "Pintura Express (Mesmo Dia)": {
+    "Riscos e Arranhões Superficiais": {
       time: "4h a 8h",
-      desc: "Reparo em estufa pressurizada com secagem infravermelha rápida. Ideal para riscos e retoques no mesmo dia."
+      speedTag: "⚡ Pronto no Mesmo Dia",
+      desc: "Retoque express localizado em estufa pressurizada com secagem por lâmpadas infravermelhas. Ideal para riscos e arranhões sem afetar a peça inteira.",
+      steps: [
+        "Colorimetria 100% fiel à montadora",
+        "Aplicação em cabine pressurizada livre de poeira",
+        "Secagem infravermelha e polimento técnico"
+      ]
     },
-    "Funilaria & Martelinho (PDR)": {
-      time: "2h a 6h",
-      desc: "Desamassamento artesanal sem danificar a tinta original. Preserva o valor de fábrica do veículo."
+    "Martelinho de Ouro (PDR)": {
+      time: "2h a 5h",
+      speedTag: "⚡ Pronto no Mesmo Dia",
+      desc: "Desamassamento milimétrico com ferramentas alemãs de alta precisão. Remove mossas e batidas preservando 100% da tinta original de fábrica.",
+      steps: [
+        "Leitura de vincos por luminária de LED de alta definição",
+        "Massagem da chapa por trás do painel sem romper a tinta",
+        "Inspeção final e polimento de acabamento espelhado"
+      ]
     },
     "Pintura de Peça Inteira": {
       time: "24h a 48h",
-      desc: "Preparação completa, aplicação de primer, tinta original com colorimetria computadorizada e verniz alto sólido."
+      speedTag: "⭐ Padrão Premium",
+      desc: "Preparação completa da peça, primer fosfatizante de alta aderência, tinta formulada por código original e verniz alto sólido com secagem em estufa.",
+      steps: [
+        "Descontaminação química e nivelamento do painel",
+        "Pintura em cabine pressurizada com filtro de partículas",
+        "Cura térmica controlada e vitrificação de proteção"
+      ]
     },
-    "Polimento Técnico & Proteção": {
-      time: "6h a 12h",
-      desc: "Remoção de micro-riscos, correção do verniz e aplicação de proteção de brilho espelhado."
+    "Funilaria & Restauração Completa": {
+      time: "1 a 3 dias",
+      speedTag: "🛠️ Reparo Estrutural Completo",
+      desc: "Recuperação profunda de lataria pós-colisão, repuxamento milimétrico, alinhamento de vincos e gaps, com acabamento perfeito sem ondulações.",
+      steps: [
+        "Alinhamento de tolerâncias de gap entre peças",
+        "Solda ponto automotiva e tratamento anticorrosivo",
+        "Preparação de estufa, fundo epóxi e pintura premium"
+      ]
     }
   };
 
   function updateEstimate() {
-    const info = estimateMap[selectedService] || { time: "4h a 24h", desc: "Avaliação rápida conforme a extensão do dano." };
+    const info = estimateMap[selectedService] || {
+      time: "4h a 24h",
+      speedTag: "⚡ Reparo Rápido",
+      desc: "Avaliação técnica imediata conforme a profundidade do dano.",
+      steps: [
+        "Análise minuciosa da peça e formulação da cor",
+        "Tratamento da lataria e estufa pressurizada",
+        "Inspeção de controle de qualidade final"
+      ]
+    };
+
     if (estimateTimeDisplay) {
-      estimateTimeDisplay.innerHTML = `Tempo Médio: <span>${info.time}</span>`;
+      estimateTimeDisplay.innerHTML = `⏱️ <span>${info.time}</span>`;
     }
+
+    if (speedTagDisplay) {
+      speedTagDisplay.textContent = info.speedTag;
+    }
+
     if (estimateSummaryDisplay) {
-      estimateSummaryDisplay.innerHTML = `<strong>Serviço:</strong> ${selectedService}<br><strong>Região:</strong> ${selectedPart}<br><span style="color: #94a3b8; font-size: 0.9rem;">${info.desc}</span>`;
+      estimateSummaryDisplay.innerHTML = `<strong>${selectedService}</strong> no <strong>${selectedPart}</strong>.<br><span>${info.desc}</span>`;
+    }
+
+    if (processStepsDisplay && info.steps) {
+      processStepsDisplay.innerHTML = info.steps.map((step, idx) => `
+        <div class="step-item"><span class="step-dot">${idx + 1}</span> ${step}</div>
+      `).join('');
     }
 
     // Build personalized WhatsApp URL
-    const message = `Olá JF Funilaria! Gostaria de um orçamento rápido:\n\n*Serviço:* ${selectedService}\n*Área do Carro:* ${selectedPart}\n*Tempo Estimado pelo Simulador:* ${info.time}\n\nVou enviar fotos do meu veículo a seguir para confirmação do valor!`;
+    const message = `Olá JF Funilaria! Estimei meu reparo no site:\n\n*Tipo de Reparo:* ${selectedService}\n*Área do Carro:* ${selectedPart}\n*Prazo Estimado:* ${info.time} (${info.speedTag})\n\nVou enviar fotos do meu veículo a seguir para confirmação do orçamento!`;
     const encodedMessage = encodeURIComponent(message);
     sendWhatsAppBtn.href = `https://wa.me/${CONFIG.whatsappPhone}?text=${encodedMessage}`;
   }
