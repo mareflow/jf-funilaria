@@ -262,7 +262,7 @@ function initQuoteCalculator() {
     }
 
     // Build personalized WhatsApp URL
-    const message = `Olá JF Funilaria! Estimei meu reparo no site:\n\n*Tipo de Reparo:* ${selectedService}\n*Área do Carro:* ${selectedPart}\n*Prazo Estimado:* ${info.time} (${info.speedTag})\n\nVou enviar fotos do meu veículo a seguir para confirmação do orçamento!`;
+    const message = `Olá JF Funilaria! Estimei meu reparo no site:\n\n*Tipo de Reparo:* ${selectedService}\n*Área do Carro:* ${selectedPart}\n*Prazo Estimado:* ${info.time} (${info.speedTag})\n_(Prazo estimado a contar do início do serviço, sujeito à fila da oficina)_\n\nVou enviar fotos do meu veículo a seguir para confirmação do orçamento!`;
     const encodedMessage = encodeURIComponent(message);
     sendWhatsAppBtn.href = `https://wa.me/${CONFIG.whatsappPhone}?text=${encodedMessage}`;
   }
