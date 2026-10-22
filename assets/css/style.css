@@ -1179,11 +1179,11 @@ section {
 }
 
 /* ==========================================================================
-   TRUST INTRO EDITORIAL (CONFIANÇA, CLAREZA E GARANTIA)
+   TRUST INTRO & GOOGLE REVIEWS LEAD
    ========================================================================== */
-.trust-editorial-block {
-  max-width: 1060px;
-  margin: 0 auto 55px auto;
+.reviews-intro-lead {
+  max-width: 100%;
+  margin: 0 auto 35px auto;
 }
 
 .trust-lead-text {
@@ -1191,8 +1191,8 @@ section {
   color: var(--text-primary);
   line-height: 1.75;
   text-align: center;
-  max-width: 880px;
-  margin: 0 auto 38px auto;
+  max-width: 860px;
+  margin: 0 auto 34px auto;
 }
 
 .trust-lead-text strong {
@@ -1200,32 +1200,25 @@ section {
   font-weight: 600;
 }
 
-.trust-pillars-row {
+.reviews-pillars-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 36px;
-  margin-bottom: 38px;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-.trust-pillar {
-  position: relative;
-  padding-left: 20px;
-  border-left: 2px solid rgba(0, 168, 255, 0.4);
-  transition: all var(--trans-normal);
+.reviews-pillar {
+  padding: 0 4px;
 }
 
-.trust-pillar:hover {
-  border-left-color: var(--color-primary-cyan);
-}
-
-.trust-pillar-title {
+.pillar-header {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
-.pillar-bullet {
+.pillar-icon-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -1234,74 +1227,39 @@ section {
   flex-shrink: 0;
 }
 
-.trust-pillar-title h4 {
+.pillar-header h4 {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
   letter-spacing: -0.2px;
 }
 
-.trust-pillar p {
-  font-size: 0.93rem;
+.reviews-pillar p {
+  font-size: 0.92rem;
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }
 
-.trust-bridge-divider {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin: 42px auto 10px auto;
-  max-width: 900px;
-}
-
-.bridge-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 168, 255, 0.3), transparent);
-}
-
-.trust-bridge-text {
-  font-size: 1rem;
+.reviews-callout {
+  font-size: 1.02rem;
   color: #94a3b8;
   font-style: italic;
   text-align: center;
-  margin: 0;
+  margin: 32px auto 0 auto;
   line-height: 1.6;
-  max-width: 640px;
-}
-
-.google-reviews-header {
-  margin-top: 35px;
-  margin-bottom: 35px;
-}
-
-.google-section-title {
-  font-family: var(--font-heading);
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 12px 0 8px 0;
-  letter-spacing: -0.4px;
+  max-width: 760px;
 }
 
 @media (max-width: 900px) {
-  .trust-pillars-row {
+  .reviews-pillars-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
   .trust-lead-text {
     font-size: 1.02rem;
-  }
-  .trust-bridge-divider {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .bridge-line {
-    width: 60%;
   }
 }
 
