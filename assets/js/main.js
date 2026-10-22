@@ -5,8 +5,8 @@
 
 // Global Configuration
 const CONFIG = {
-  // Número de WhatsApp da JF Funilaria (pode ser alterado facilmente aqui)
-  whatsappPhone: "5511999999999", 
+  // Número de WhatsApp da JF Funilaria Oficial: (48) 98455-6805
+  whatsappPhone: "5548984556805", 
   companyName: "JF Funilaria & Pintura Express"
 };
 

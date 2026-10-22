@@ -1655,6 +1655,19 @@ section {
   font-size: 0.95rem;
   color: #ffffff;
   font-weight: 500;
+  line-height: 1.45;
+}
+
+.footer-contact-text a {
+  display: inline-block;
+  cursor: pointer;
+  transition: color var(--trans-fast), text-shadow var(--trans-fast);
+}
+
+.footer-contact-text a:hover {
+  color: var(--color-primary-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .footer-bottom {
