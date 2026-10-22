@@ -1745,7 +1745,7 @@ section {
   margin-top: 2px;
 }
 
-.schedule-days {
+.schedule-days, .schedule-time {
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 500;
@@ -1753,10 +1753,7 @@ section {
 }
 
 .schedule-time {
-  color: var(--color-primary-cyan);
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 .footer-bottom {
