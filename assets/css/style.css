@@ -1321,41 +1321,109 @@ section {
   padding: 28px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  transition: all var(--trans-normal);
 }
 
-.rating-stars {
-  color: var(--color-gold);
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-card);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 18px rgba(0, 168, 255, 0.1);
+}
+
+/* Google Reviews Specific Styles */
+.google-review-header {
   display: flex;
-  gap: 4px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   margin-bottom: 14px;
 }
 
-.rating-stars svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
+.google-user-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.testimonial-text {
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  line-height: 1.6;
-  font-style: italic;
-  margin-bottom: 20px;
+.google-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
-.client-info h5 {
+.google-author-name {
   font-family: var(--font-heading);
   font-size: 1.05rem;
   font-weight: 700;
   color: #ffffff;
+  margin: 0 0 3px 0;
   line-height: 1.2;
 }
 
-.client-info span {
-  font-size: 0.82rem;
+.google-sub-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
   color: var(--text-secondary);
+}
+
+.google-local-guide-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #ff9800;
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+.bullet-dot {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.google-review-time {
+  color: var(--text-secondary);
+}
+
+.google-source-icon {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.google-rating-stars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+
+.google-rating-stars .star-icon {
+  width: 19px;
+  height: 19px;
+  fill: #FBBC04;
+  filter: drop-shadow(0 1px 2px rgba(251, 188, 4, 0.25));
+}
+
+.google-review-text {
+  font-size: 0.93rem;
+  color: var(--text-primary);
+  line-height: 1.65;
+  font-style: normal;
 }
 
 /* ==========================================================================
