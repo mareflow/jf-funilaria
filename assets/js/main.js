@@ -140,6 +140,18 @@ function initBeforeAfterSlider() {
     isDragging = false;
   });
 
+  // Synchronize After image width to match container width on all viewports
+  function syncAfterImage() {
+    const afterImg = afterWrapper.querySelector('.comp-img');
+    if (afterImg && container) {
+      afterImg.style.width = `${container.clientWidth}px`;
+      afterImg.style.minWidth = `${container.clientWidth}px`;
+      afterImg.style.height = `${container.clientHeight}px`;
+    }
+  }
+  window.addEventListener('resize', syncAfterImage);
+  setTimeout(syncAfterImage, 50);
+
   // Optional: Auto subtle bounce animation when user scrolls into view
   let animatedOnce = false;
   const observer = new IntersectionObserver((entries) => {
