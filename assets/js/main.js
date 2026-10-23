@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaqAccordion();
   initContactForm();
   initSmoothScroll();
+  initCarousels();
 });
 
 /* ==========================================================================
@@ -388,3 +389,193 @@ function initSmoothScroll() {
     });
   });
 }
+
+/* ==========================================================================
+   7. INTERACTIVE CAROUSELS (SERVICES & GOOGLE REVIEWS WITH AUTO-PLAY)
+   ========================================================================== */
+function initCarousels() {
+  // 1. Services Carousel Setup
+  setupCarousel({
+    containerId: 'servicesCarousel',
+    viewportId: 'servicesViewport',
+    trackId: 'servicesTrack',
+    prevBtnId: 'servicesPrevBtn',
+    nextBtnId: 'servicesNextBtn',
+    dotsId: 'servicesDots',
+    autoplay: false
+  });
+
+  // 2. Google Reviews Carousel Setup (With Slow Auto-Play & Click-to-Pause)
+  setupCarousel({
+    containerId: 'reviewsCarousel',
+    viewportId: 'reviewsViewport',
+    trackId: 'reviewsTrack',
+    prevBtnId: 'reviewsPrevBtn',
+    nextBtnId: 'reviewsNextBtn',
+    dotsId: 'reviewsDots',
+    autoplay: true,
+    autoplayInterval: 5500, // Transição suave a cada 5.5s
+    pauseOnClick: true      // "se a pessoa clicar ela fica parada"
+  });
+}
+
+function setupCarousel(config) {
+  const container = document.getElementById(config.containerId);
+  const viewport = document.getElementById(config.viewportId);
+  const track = document.getElementById(config.trackId);
+  const prevBtn = document.getElementById(config.prevBtnId);
+  const nextBtn = document.getElementById(config.nextBtnId);
+  const dotsContainer = document.getElementById(config.dotsId);
+
+  if (!container || !viewport || !track) return;
+
+  const slides = Array.from(track.querySelectorAll('.carousel-slide'));
+  if (slides.length === 0) return;
+
+  let currentIndex = 0;
+  let autoplayTimer = null;
+  let userPaused = false;
+
+  // Create Navigation Dots
+  if (dotsContainer) {
+    dotsContainer.innerHTML = '';
+    slides.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = `carousel-dot${idx === 0 ? ' active' : ''}`;
+      dot.setAttribute('aria-label', `Ir para item ${idx + 1}`);
+      dot.addEventListener('click', () => {
+        if (config.pauseOnClick) stopAutoplay();
+        goToSlide(idx);
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  const dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('.carousel-dot')) : [];
+
+  function updateDots(index) {
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === index);
+    });
+  }
+
+  function getSlideOffset(index) {
+    if (index <= 0) return 0;
+    if (index >= slides.length) index = slides.length - 1;
+    const slide = slides[index];
+    return slide.offsetLeft - track.offsetLeft;
+  }
+
+  function goToSlide(index) {
+    if (index < 0) index = 0;
+    if (index >= slides.length) index = slides.length - 1;
+    currentIndex = index;
+    const targetScroll = getSlideOffset(index);
+    viewport.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth'
+    });
+    updateDots(currentIndex);
+  }
+
+  // Previous & Next Navigation Buttons
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (config.pauseOnClick) stopAutoplay();
+      const prevIdx = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+      goToSlide(prevIdx);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (config.pauseOnClick) stopAutoplay();
+      const nextIdx = (currentIndex + 1) % slides.length;
+      goToSlide(nextIdx);
+    });
+  }
+
+  // Sync scroll on manual touch-swipe or wheel
+  let isScrolling = false;
+  viewport.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      window.requestAnimationFrame(() => {
+        const scrollLeft = viewport.scrollLeft;
+        let closestIndex = 0;
+        let minDiff = Infinity;
+
+        slides.forEach((slide, idx) => {
+          const slidePos = slide.offsetLeft - track.offsetLeft;
+          const diff = Math.abs(slidePos - scrollLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = idx;
+          }
+        });
+
+        if (closestIndex !== currentIndex) {
+          currentIndex = closestIndex;
+          updateDots(currentIndex);
+        }
+        isScrolling = false;
+      });
+      isScrolling = true;
+    }
+  }, { passive: true });
+
+  // Auto-Play Logic
+  function startAutoplay() {
+    if (!config.autoplay || autoplayTimer || userPaused) return;
+    autoplayTimer = setInterval(() => {
+      if (userPaused) return;
+      const nextIdx = (currentIndex + 1) % slides.length;
+      goToSlide(nextIdx);
+    }, config.autoplayInterval || 5500);
+  }
+
+  function stopAutoplay() {
+    userPaused = true;
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function pauseAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function resumeAutoplay() {
+    if (!userPaused && config.autoplay) {
+      startAutoplay();
+    }
+  }
+
+  if (config.autoplay) {
+    startAutoplay();
+
+    // If user clicks anywhere on the carousel, permanent stop ("se a pessoa clicar ela fica parada")
+    if (config.pauseOnClick) {
+      container.addEventListener('click', () => {
+        stopAutoplay();
+      });
+
+      container.addEventListener('touchstart', () => {
+        stopAutoplay();
+      }, { passive: true });
+    }
+
+    // Pause on mouse hover, resume on mouse leave (if not clicked to stop)
+    container.addEventListener('mouseenter', () => {
+      pauseAutoplay();
+    });
+
+    container.addEventListener('mouseleave', () => {
+      resumeAutoplay();
+    });
+  }
+}
+

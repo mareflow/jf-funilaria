@@ -368,9 +368,16 @@
         </p>
       </div>
 
-      <div class="grid services-grid">
-        <!-- 1 -->
-        <article class="service-card">
+      <!-- Carrossel Interativo de Serviços -->
+      <div class="carousel-container services-carousel" id="servicesCarousel">
+        <button class="carousel-arrow carousel-prev" id="servicesPrevBtn" aria-label="Serviço anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
+        <div class="carousel-viewport" id="servicesViewport">
+          <div class="carousel-track" id="servicesTrack">
+            <!-- 1 -->
+            <article class="service-card carousel-slide">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/>
@@ -394,7 +401,7 @@
         </article>
 
         <!-- 2 -->
-        <article class="service-card">
+        <article class="service-card carousel-slide">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
@@ -418,7 +425,7 @@
         </article>
 
         <!-- 3 -->
-        <article class="service-card">
+        <article class="service-card carousel-slide">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -443,7 +450,7 @@
         </article>
 
         <!-- 4 -->
-        <article class="service-card">
+        <article class="service-card carousel-slide">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"></circle>
@@ -468,7 +475,7 @@
         </article>
 
         <!-- 5 -->
-        <article class="service-card">
+        <article class="service-card carousel-slide">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="4"></circle>
@@ -493,7 +500,7 @@
         </article>
 
         <!-- 6 -->
-        <article class="service-card">
+        <article class="service-card carousel-slide">
           <div class="service-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -514,8 +521,15 @@
             </svg>
             Orçar Vitrificação
           </a>
-        </article>
+          </article>
+          </div>
+        </div>
+
+        <button class="carousel-arrow carousel-next" id="servicesNextBtn" aria-label="Próximo serviço">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
+      <div class="carousel-dots" id="servicesDots"></div>
     </div>
   </section>
 
@@ -549,9 +563,16 @@
         </p>
       </div>
 
-      <div class="grid testimonials-grid">
-        <!-- Review 1: Adriano Antunes -->
-        <article class="testimonial-card google-review-card">
+      <!-- Carrossel de Avaliações do Google com Auto-Play Suave -->
+      <div class="carousel-container reviews-carousel" id="reviewsCarousel">
+        <button class="carousel-arrow carousel-prev" id="reviewsPrevBtn" aria-label="Avaliação anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+
+        <div class="carousel-viewport" id="reviewsViewport">
+          <div class="carousel-track" id="reviewsTrack">
+            <!-- Review 1: Adriano Antunes -->
+            <article class="testimonial-card google-review-card carousel-slide">
           <div class="google-review-header">
             <div class="google-user-meta">
               <div class="google-avatar" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);">A</div>
@@ -586,7 +607,7 @@
         </article>
 
         <!-- Review 2: Rikttier Lima (Local Guide) -->
-        <article class="testimonial-card google-review-card">
+        <article class="testimonial-card google-review-card carousel-slide">
           <div class="google-review-header">
             <div class="google-user-meta">
               <div class="google-avatar" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">R</div>
@@ -621,7 +642,7 @@
         </article>
 
         <!-- Review 3: Rafael Steinhauser -->
-        <article class="testimonial-card google-review-card">
+        <article class="testimonial-card google-review-card carousel-slide">
           <div class="google-review-header">
             <div class="google-user-meta">
               <div class="google-avatar" style="background: linear-gradient(135deg, #d31027 0%, #ea384d 100%);">R</div>
@@ -654,7 +675,14 @@
             "Serviço da JF de primeiríssima qualidade, Levei meu carro para realizar o conserto e a pintura do para-choque e o resultado superou minhas expectativas. A tonalidade da cor ficou idêntica à original e o acabamento está impecável, sem qualquer marca de emenda ou imperfeição. Profissionais extremamente caprichosos e técnicos, carro entregue limpo e no prazo combinado, Recomendo muito!!!"
           </p>
         </article>
+          </div>
+        </div>
+
+        <button class="carousel-arrow carousel-next" id="reviewsNextBtn" aria-label="Próxima avaliação">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
+      <div class="carousel-dots" id="reviewsDots"></div>
     </div>
   </section>
 
