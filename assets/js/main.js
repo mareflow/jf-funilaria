@@ -204,7 +204,7 @@ function initQuoteCalculator() {
   const estimateMap = {
     "Riscos e Arranhões Superficiais": {
       time: "4h a 8h",
-      speedTag: "⚡ Pronto no Mesmo Dia",
+      speedTag: "Pronto no Mesmo Dia",
       desc: "Retoque express localizado em estufa pressurizada com secagem por lâmpadas infravermelhas. Ideal para riscos e arranhões sem afetar a peça inteira.",
       steps: [
         "Colorimetria 100% fiel à montadora",
@@ -214,7 +214,7 @@ function initQuoteCalculator() {
     },
     "Martelinho de Ouro (PDR)": {
       time: "2h a 5h",
-      speedTag: "⚡ Pronto no Mesmo Dia",
+      speedTag: "Pronto no Mesmo Dia",
       desc: "Desamassamento milimétrico com ferramentas alemãs de alta precisão. Remove mossas e batidas preservando 100% da tinta original de fábrica.",
       steps: [
         "Leitura de vincos por luminária de LED de alta definição",
@@ -224,7 +224,7 @@ function initQuoteCalculator() {
     },
     "Pintura de Peça Inteira": {
       time: "24h a 48h",
-      speedTag: "⭐ Padrão Premium",
+      speedTag: "Padrão Premium",
       desc: "Preparação completa da peça, primer fosfatizante de alta aderência, tinta formulada por código original e verniz alto sólido com secagem em estufa.",
       steps: [
         "Descontaminação química e nivelamento do painel",
@@ -234,7 +234,7 @@ function initQuoteCalculator() {
     },
     "Funilaria & Restauração Completa": {
       time: "1 a 3 dias",
-      speedTag: "🛠️ Reparo Estrutural Completo",
+      speedTag: "Reparo Estrutural Completo",
       desc: "Recuperação profunda de lataria pós-colisão, repuxamento milimétrico, alinhamento de vincos e gaps, com acabamento perfeito sem ondulações.",
       steps: [
         "Alinhamento de tolerâncias de gap entre peças",
@@ -247,7 +247,7 @@ function initQuoteCalculator() {
   function updateEstimate() {
     const info = estimateMap[selectedService] || {
       time: "4h a 24h",
-      speedTag: "⚡ Reparo Rápido",
+      speedTag: "Reparo Rápido",
       desc: "Avaliação técnica imediata conforme a profundidade do dano.",
       steps: [
         "Análise minuciosa da peça e formulação da cor",
@@ -257,7 +257,7 @@ function initQuoteCalculator() {
     };
 
     if (estimateTimeDisplay) {
-      estimateTimeDisplay.innerHTML = `⏱️ <span>${info.time}</span>`;
+      estimateTimeDisplay.innerHTML = `<span>${info.time}</span>`;
     }
 
     if (speedTagDisplay) {
