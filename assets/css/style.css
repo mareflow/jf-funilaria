@@ -1919,6 +1919,24 @@ section {
   font-size: 0.86rem;
 }
 
+.footer-credits {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.footer-credits .credit-link {
+  color: #94a3b8;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--trans-fast);
+}
+
+.footer-credits .credit-link:hover {
+  color: var(--color-primary-cyan);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ==========================================================================
    FLOATING WHATSAPP BUTTON
    ========================================================================== */
