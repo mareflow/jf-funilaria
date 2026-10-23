@@ -280,12 +280,31 @@ function initQuoteCalculator() {
     sendWhatsAppBtn.href = `https://wa.me/${CONFIG.whatsappPhone}?text=${encodedMessage}`;
   }
 
+  const step2Element = document.getElementById('simStep2');
+  const resultBoxElement = document.getElementById('simResultBox') || document.querySelector('.sim-result-box');
+
+  function smoothScrollToElement(el) {
+    if (!el) return;
+    const headerOffset = 80;
+    const elementPosition = el.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+
   serviceButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       serviceButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       selectedService = btn.getAttribute('data-service') || btn.innerText.trim();
       updateEstimate();
+
+      // Desce automaticamente para o Passo 2 conforme solicitado
+      setTimeout(() => {
+        smoothScrollToElement(step2Element);
+      }, 150);
     });
   });
 
@@ -295,6 +314,11 @@ function initQuoteCalculator() {
       btn.classList.add('active');
       selectedPart = btn.getAttribute('data-part') || btn.innerText.trim();
       updateEstimate();
+
+      // Desce automaticamente para o Resultado / Cockpit conforme solicitado
+      setTimeout(() => {
+        smoothScrollToElement(resultBoxElement);
+      }, 150);
     });
   });
 
