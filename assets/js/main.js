@@ -267,7 +267,7 @@ function initQuoteCalculator() {
     }
 
     // The simulator always leads to an in-person evaluation.
-    sendWhatsAppBtn.href = 'https://www.google.com/maps/dir/?api=1&destination=R.%20Jo%C3%A3o%20Jos%C3%A9%20Martins%2C%2043%2C%20Areias%2C%20S%C3%A3o%20Jos%C3%A9%2C%20SC';
+    sendWhatsAppBtn.href = 'https://www.google.com/maps/dir//Jf+funilaria+e+pintura+express,+R.+Jo%C3%A3o+Jos%C3%A9+Martins,+43+-+Areias,+S%C3%A3o+Jos%C3%A9+-+SC,+88113-365/@-27.5808256,-48.6244352,13z/data=!4m8!4m7!1m0!1m5!1m1!1s0x9527498c9e225419:0xcfabe46380812401!2m2!1d-48.6324493!2d-27.560056?entry=ttu&g_ep=EgoyMDI2MTExMC4wIKXMDSoASAFQAw%3D%3D';
   }
 
   const step2Element = document.getElementById('simStep2');
