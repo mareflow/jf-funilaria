@@ -430,26 +430,25 @@ section {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('../images/hero_car_paint.jpg');
+  background-image: url('../images/fachada-jf.jpg');
   background-size: cover;
-  background-position: center right;
-  /* Make image much more apparent, as requested by the user */
-  opacity: 0.72;
-  filter: contrast(1.15) brightness(1.05);
-  transform: scale(1.02);
-  transition: transform 6s ease-out;
+  background-position: center 55%;
+  opacity: 1;
+  filter: saturate(0.92);
+  transform: none;
 }
 
 .hero-section:hover .hero-bg {
-  transform: scale(1.04);
+  transform: none;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: 
-    linear-gradient(90deg, #05080d 15%, rgba(5, 8, 13, 0.75) 55%, rgba(5, 8, 13, 0.25) 100%),
-    linear-gradient(180deg, rgba(5, 8, 13, 0.2) 0%, transparent 50%, rgba(5, 8, 13, 0.95) 100%);
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5, 8, 13, 0.94) 0%, rgba(5, 8, 13, 0.84) 32%, rgba(5, 8, 13, 0.48) 57%, rgba(5, 8, 13, 0.16) 100%),
+    linear-gradient(180deg, rgba(5, 8, 13, 0.20) 0%, transparent 50%, rgba(5, 8, 13, 0.85) 100%);
 }
 
 .hero-content {
@@ -493,7 +492,7 @@ section {
 
 .hero-description {
   font-size: 1.12rem;
-  color: var(--text-secondary);
+  color: #edf2f7;
   line-height: 1.7;
   margin-bottom: 34px;
   max-width: 600px;
@@ -2065,7 +2064,14 @@ section {
   }
 
   .hero-bg {
-    opacity: 0.55;
+    opacity: 1;
+    background-position: 48% center;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(90deg, rgba(5, 8, 13, 0.88), rgba(5, 8, 13, 0.66)),
+      linear-gradient(180deg, rgba(5, 8, 13, 0.12), rgba(5, 8, 13, 0.82));
   }
 
   .hero-title {
