@@ -1,21 +1,13 @@
 /**
  * JF FUNILARIA & PINTURA EXPRESS
- * Interactive Core Engine & WhatsApp Integration
+ * Interactive Core Engine & In-Person Evaluation
  */
-
-// Global Configuration
-const CONFIG = {
-  // Número de WhatsApp da JF Funilaria Oficial: (48) 98455-6805
-  whatsappPhone: "5548984556805", 
-  companyName: "JF Funilaria & Pintura Express"
-};
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initBeforeAfterSlider();
   initQuoteCalculator();
   initFaqAccordion();
-  initContactForm();
   initSmoothScroll();
   initCarousels();
 });
@@ -204,7 +196,7 @@ function initQuoteCalculator() {
   const estimateMap = {
     "Riscos e Arranhões Superficiais": {
       time: "4h a 8h",
-      speedTag: "Pronto no Mesmo Dia",
+      speedTag: "Sujeito à Avaliação",
       desc: "Retoque express localizado em estufa pressurizada com secagem por lâmpadas infravermelhas. Ideal para riscos e arranhões sem afetar a peça inteira.",
       steps: [
         "Colorimetria 100% fiel à montadora",
@@ -214,7 +206,7 @@ function initQuoteCalculator() {
     },
     "Martelinho de Ouro (PDR)": {
       time: "2h a 5h",
-      speedTag: "Pronto no Mesmo Dia",
+      speedTag: "Sujeito à Avaliação",
       desc: "Desamassamento milimétrico com ferramentas alemãs de alta precisão. Remove mossas e batidas preservando 100% da tinta original de fábrica.",
       steps: [
         "Leitura de vincos por luminária de LED de alta definição",
@@ -248,7 +240,7 @@ function initQuoteCalculator() {
     const info = estimateMap[selectedService] || {
       time: "4h a 24h",
       speedTag: "Reparo Rápido",
-      desc: "Avaliação técnica imediata conforme a profundidade do dano.",
+      desc: "Avaliação presencial para confirmar a extensão dos danos e o prazo.",
       steps: [
         "Análise minuciosa da peça e formulação da cor",
         "Tratamento da lataria e estufa pressurizada",
@@ -274,10 +266,8 @@ function initQuoteCalculator() {
       `).join('');
     }
 
-    // Build personalized WhatsApp URL
-    const message = `Olá JF Funilaria! Estimei meu reparo no site:\n\n*Tipo de Reparo:* ${selectedService}\n*Área do Carro:* ${selectedPart}\n*Prazo Estimado:* ${info.time} (${info.speedTag})\n_(Prazo estimado a contar do início do serviço, sujeito à fila da oficina)_\n\nVou enviar fotos do meu veículo a seguir para confirmação do orçamento!`;
-    const encodedMessage = encodeURIComponent(message);
-    sendWhatsAppBtn.href = `https://wa.me/${CONFIG.whatsappPhone}?text=${encodedMessage}`;
+    // The simulator always leads to an in-person evaluation.
+    sendWhatsAppBtn.href = 'https://www.google.com/maps/dir/?api=1&destination=R.%20Jo%C3%A3o%20Jos%C3%A9%20Martins%2C%2043%2C%20Areias%2C%20S%C3%A3o%20Jos%C3%A9%2C%20SC';
   }
 
   const step2Element = document.getElementById('simStep2');
@@ -357,35 +347,6 @@ function initFaqAccordion() {
         questionBtn.setAttribute('aria-expanded', 'true');
       }
     });
-  });
-}
-
-/* ==========================================================================
-   5. FAST CONTACT FORM -> WHATSAPP REDIRECT
-   ========================================================================== */
-function initContactForm() {
-  const contactForm = document.getElementById('fastQuoteForm');
-  if (!contactForm) return;
-
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById('clientName')?.value || '';
-    const phone = document.getElementById('clientPhone')?.value || '';
-    const carModel = document.getElementById('clientCar')?.value || '';
-    const serviceType = document.getElementById('clientService')?.value || 'Orçamento Geral';
-    const notes = document.getElementById('clientNotes')?.value || '';
-
-    if (!name.trim()) {
-      alert('Por favor, informe seu nome.');
-      return;
-    }
-
-    const message = `Olá JF Funilaria! Solicitação de Orçamento pelo Site:\n\n*Nome:* ${name}\n*Telefone:* ${phone}\n*Veículo:* ${carModel}\n*Serviço de Interesse:* ${serviceType}\n*Detalhes do Dano:* ${notes}\n\nEstou no aguardo do contato!`;
-    const whatsappUrl = `https://wa.me/${CONFIG.whatsappPhone}?text=${encodeURIComponent(message)}`;
-
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
   });
 }
 
